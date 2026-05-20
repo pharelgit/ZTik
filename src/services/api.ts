@@ -27,7 +27,7 @@ export async function fetchTikTokVideo(url: string): Promise<VideoInfo> {
     author: data.author?.nickname || data.author?.unique_id || 'Inconnu',
     authorId: data.author?.unique_id || '',
     thumbnail: data.cover,
-    videoUrl: data.play,
+    videoUrl: `/api/proxy?url=${encodeURIComponent(data.play)}`,
     duration: data.duration || 0,
     likes: data.digg_count || 0,
     views: data.play_count || 0,

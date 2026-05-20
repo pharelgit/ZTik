@@ -47,10 +47,11 @@ export default function DownloadPage() {
     addToLibrary(video)
     setSaved(true)
     const a = document.createElement('a')
-    a.href = video.videoUrl
+    a.href = video.videoUrl  // pointe déjà vers /api/proxy?url=...
     a.download = `${video.author}_${video.id}.mp4`
-    a.target = '_blank'
+    document.body.appendChild(a)
     a.click()
+    document.body.removeChild(a)
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
